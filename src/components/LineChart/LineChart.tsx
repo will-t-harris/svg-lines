@@ -52,5 +52,29 @@ export const LineChart: React.FC<Props> = ({
 			<path className="linechart-path" d={pathD} style={{ stroke: color }} />
 		);
 	};
+
+	const makeAxis = () => {
+		const minX = getMinimumX();
+		const maxX = getMaximumX();
+		const minY = getMinimumY();
+		const maxY = getMaximumY();
+
+		return (
+			<g>
+				<line
+					x1={getSvgX(minX)}
+					y1={getSvgY(minY)}
+					x2={getSvgX(maxX)}
+					y2={getSvgY(minY)}
+				/>
+				<line
+					x1={getSvgX(minX)}
+					y1={getSvgY(minY)}
+					x2={getSvgX(minX)}
+					y2={getSvgY(maxY)}
+				/>
+			</g>
+		);
+	};
 	return <h1>Line Chart</h1>;
 };
