@@ -1,10 +1,12 @@
 import * as React from "react";
 import { ReactElement } from "react";
+
+import { LineChart } from "./components/LineChart/LineChart";
 import "./App.css";
 
 const App: React.FC = (): ReactElement => {
-	const createRandomArray = ({ total = 10 }: { total: number }) => {
-		let data = [];
+	let data: { x: number; y: number }[] = [];
+	const createRandomArray = (total: number) => {
 		for (let element: number = 0; element < total; element++) {
 			const y: number = Math.floor(Math.random() * 50) + 50;
 			const obj: { x: number; y: number } = {
@@ -20,6 +22,7 @@ const App: React.FC = (): ReactElement => {
 		<div className="App">
 			<header className="App-header">
 				<h1>App Component</h1>
+				<LineChart data={createRandomArray(10)} />
 			</header>
 		</div>
 	);
