@@ -76,5 +76,10 @@ export const LineChart: React.FC<Props> = ({
 			</g>
 		);
 	};
-	return <h1>Line Chart</h1>;
+	return (
+		<svg viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+			{makeSvgPath()}
+			{makeAxis()}
+		</svg>
+	);
 };
