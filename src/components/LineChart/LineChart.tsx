@@ -53,7 +53,7 @@ export const LineChart: React.FC<Props> = ({
 			return `L ${getSvgX(point.x)} ${getSvgY(point.y)} `;
     });
     // I was getting commas in the final path, which caused the paths
-    // to be invalide. This replace works for now, but I'm sure there's
+    // to be invalid. This replace works for now, but I'm sure there's
     // a better solution.
 		const strippedPath = pathD.replace(/,/gm, "");
 		return (
