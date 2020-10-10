@@ -38,5 +38,9 @@ export const LineChart: React.FC<Props> = ({
 		return maximumYValue;
 	};
 
+	const getSvgX = (x: number): number => (x / getMaximumX()) * svgWidth;
+	const getSvgY = (y: number): number =>
+		svgHeight - (y / getMaximumY()) * svgHeight;
+
 	return <h1>Line Chart</h1>;
 };
