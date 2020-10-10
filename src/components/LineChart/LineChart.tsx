@@ -42,5 +42,15 @@ export const LineChart: React.FC<Props> = ({
 	const getSvgY = (y: number): number =>
 		svgHeight - (y / getMaximumY()) * svgHeight;
 
+	const makeSvgPath = () => {
+		let pathD = `M ${getSvgX(data[0].x)} ${getSvgY(data[0].y)}`;
+		pathD += data.map((point, index) => {
+			return `L ${getSvgX(point.x)} ${getSvgY(point.y)}`;
+		});
+
+		return (
+			<path className="linechart-path" d={pathD} style={{ stroke: color }} />
+		);
+	};
 	return <h1>Line Chart</h1>;
 };
