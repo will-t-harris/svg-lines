@@ -44,17 +44,17 @@ export const LineChart: React.FC<Props> = ({
 
 	const getSvgY = (y: number): number => {
 		return svgHeight - (y / getMaximumY()) * svgHeight;
-  };
-  
-  // This build up the SVG paths from the data passed in
+	};
+
+	// This build up the SVG paths from the data passed in
 	const makeSvgPath = () => {
 		let pathD = ` M ${getSvgX(data[0].x)} ${getSvgY(data[0].y)} `;
 		pathD += data.map((point, i) => {
 			return `L ${getSvgX(point.x)} ${getSvgY(point.y)} `;
-    });
-    // I was getting commas in the final path, which caused the paths
-    // to be invalid. This replace works for now, but I'm sure there's
-    // a better solution.
+		});
+		// I was getting commas in the final path, which caused the paths
+		// to be invalid. This replace works for now, but I'm sure there's
+		// a better solution.
 		const strippedPath = pathD.replace(/,/gm, "");
 		return (
 			<path
@@ -89,7 +89,7 @@ export const LineChart: React.FC<Props> = ({
 		);
 	};
 	return (
-		<svg viewBox={`0 0 200 600`}>
+		<svg viewBox={`0 0 ${svgHeight} ${svgWidth}`}>
 			{makeSvgPath()}
 			{makeAxis()}
 		</svg>
