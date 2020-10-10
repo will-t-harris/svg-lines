@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import { default as React, ReactElement } from "react";
 
 import { LineChart } from "./components/LineChart/LineChart";
 import "./App.css";
@@ -15,12 +15,12 @@ const App: React.FC = (): ReactElement => {
 			data.push(obj);
 		}
 		return data;
-  };
-  
+	};
+
 	return (
 		<div className="App">
 			<header className="App-header">
-				<h1>App Component</h1>
+				<h1>React SVG Chart</h1>
 				<LineChart data={createRandomArray(10)} />
 			</header>
 		</div>

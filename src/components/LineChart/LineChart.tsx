@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import "./LineChart.css";
 
 interface Props {
@@ -38,18 +38,30 @@ export const LineChart: React.FC<Props> = ({
 		return maximumYValue;
 	};
 
-	const getSvgX = (x: number): number => (x / getMaximumX()) * svgWidth;
-	const getSvgY = (y: number): number =>
-		svgHeight - (y / getMaximumY()) * svgHeight;
+	const getSvgX = (x: number): number => {
+		return (x / getMaximumX()) * svgWidth;
+	};
 
+	const getSvgY = (y: number): number => {
+		return svgHeight - (y / getMaximumY()) * svgHeight;
+  };
+  
+  // This build up the SVG paths from the data passed in
 	const makeSvgPath = () => {
-		let pathD = `M ${getSvgX(data[0].x)} ${getSvgY(data[0].y)}`;
-		pathD += data.map((point, index) => {
-			return `L ${getSvgX(point.x)} ${getSvgY(point.y)}`;
-		});
-
+		let pathD = ` M ${getSvgX(data[0].x)} ${getSvgY(data[0].y)} `;
+		pathD += data.map((point, i) => {
+			return `L ${getSvgX(point.x)} ${getSvgY(point.y)} `;
+    });
+    // I was getting commas in the final path, which caused the paths
+    // to be invalide. This replace works for now, but I'm sure there's
+    // a better solution.
+		const strippedPath = pathD.replace(/,/gm, "");
 		return (
-			<path className="linechart-path" d={pathD} style={{ stroke: color }} />
+			<path
+				className="linechart-path"
+				d={strippedPath}
+				style={{ stroke: color }}
+			/>
 		);
 	};
 
@@ -60,7 +72,7 @@ export const LineChart: React.FC<Props> = ({
 		const maxY = getMaximumY();
 
 		return (
-			<g>
+			<g className="linechart-axis">
 				<line
 					x1={getSvgX(minX)}
 					y1={getSvgY(minY)}
@@ -77,7 +89,7 @@ export const LineChart: React.FC<Props> = ({
 		);
 	};
 	return (
-		<svg viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+		<svg viewBox={`0 0 200 600`}>
 			{makeSvgPath()}
 			{makeAxis()}
 		</svg>
