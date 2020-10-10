@@ -2,10 +2,10 @@ import * as React from "react";
 import "./LineChart.css";
 
 interface Props {
-	data: [];
-	color: string;
-	svgHeight: number;
-	svgWidth: number;
+	data: {x: number, y: number}[];
+	color?: string;
+	svgHeight?: number;
+	svgWidth?: number;
 }
 
 export const LineChart: React.FC<Props> = ({
