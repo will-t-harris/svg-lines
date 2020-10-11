@@ -22,7 +22,7 @@ const App: React.FC = (): ReactElement => {
 		<div className="App">
 			<header className="App-header">
 				<h2>Enter number of line segments to generate</h2>
-				<input type='number' value={inputState} onChange={(e) => setInputState(Number(e.target.value))} />
+				<input type='number' value={inputState} onChange={(e) => setInputState(Number(e.target.value))} min={1}/>
 				<LineChart data={createRandomArray(inputState)} />
 			</header>
 		</div>
