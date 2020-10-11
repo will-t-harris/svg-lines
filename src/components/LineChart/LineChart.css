@@ -1,5 +1,6 @@
 .linechart-path {
-  stroke-width: 2;
+  min-height: 100vh;
+  stroke-width: 1;
   fill: none;
 }
 

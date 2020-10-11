@@ -11,8 +11,8 @@ interface Props {
 export const LineChart: React.FC<Props> = ({
 	data,
 	color = "#ff4500",
-	svgHeight = 200,
-	svgWidth = 600,
+	svgHeight = 100,
+	svgWidth = 300,
 }) => {
 	const getMinimumX = (): number => {
 		const allXValues = data.map((obj) => obj.x);
@@ -46,7 +46,7 @@ export const LineChart: React.FC<Props> = ({
 		return svgHeight - (y / getMaximumY()) * svgHeight;
 	};
 
-	// This build up the SVG paths from the data passed in
+	// This builds up the SVG paths from the data passed in
 	const makeSvgPath = () => {
 		let pathD = ` M ${getSvgX(data[0].x)} ${getSvgY(data[0].y)} `;
 		pathD += data.map((point, i) => {
@@ -89,7 +89,7 @@ export const LineChart: React.FC<Props> = ({
 		);
 	};
 	return (
-		<svg viewBox={`0 0 ${svgHeight} ${svgWidth}`}>
+		<svg viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
 			{makeSvgPath()}
 			{makeAxis()}
 		</svg>
