@@ -49,7 +49,7 @@ export const LineChart: React.FC<Props> = ({
 	// This builds up the SVG paths from the data passed in
 	const makeSvgPath = () => {
 		let pathD = ` M ${getSvgX(data[0].x)} ${getSvgY(data[0].y)} `;
-		pathD += data.map((point, i) => {
+		pathD += data.map((point) => {
 			return `L ${getSvgX(point.x)} ${getSvgY(point.y)} `;
 		});
 		// I was getting commas in the final path, which caused the paths
