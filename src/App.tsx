@@ -21,8 +21,9 @@ const App: React.FC = (): ReactElement => {
 		<div className="App">
 			<header className="App-header">
 				<h2>How many line segments?</h2>
-				<p>(Limited to 5000 segments, be kind to your browser)</p>
+				<p className="subtitle">(Limited to 5000 segments, be kind to your browser)</p>
 				<input
+					className="number-input"
 					type="number"
 					value={inputState}
 					onChange={(e) => setInputState(Number(e.target.value))}
@@ -30,6 +31,7 @@ const App: React.FC = (): ReactElement => {
 					max={5000}
 				/>
 				<input
+					className="range-input"
 					type="range"
 					min={0}
 					max={5000}

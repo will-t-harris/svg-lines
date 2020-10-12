@@ -13,6 +13,18 @@
   color: white;
 }
 
+.subtitle {
+  margin-bottom: 4rem;
+}
+
+.number-input {
+  margin-bottom: 2rem;
+}
+
+.range-input {
+  margin-bottom: .5rem
+}
+
 .button {
   margin: 1.5rem 0;
 }
