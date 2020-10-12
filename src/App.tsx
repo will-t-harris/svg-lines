@@ -7,12 +7,15 @@ import "./App.css";
 const App: React.FC = (): ReactElement => {
 	const [inputState, setInputState] = useState(1);
 	const [color, setColor] = useState("");
+	const [lines, setLines] = useState([{ x: 1, y: 1 }]);
 
 	useEffect(() => {
 		setColor(createRandomHSL());
 	}, []);
 
-	const lines = createRandomArray(inputState);
+	useEffect(() => {
+		setLines(createRandomArray(inputState));
+	}, [inputState]);
 
 	return (
 		<div className="App">
