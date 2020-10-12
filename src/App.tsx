@@ -29,7 +29,7 @@ const App: React.FC = (): ReactElement => {
 				<input
 					type="range"
 					min={0}
-					max={360}
+					max={5000}
 					step={1}
 					value={inputState}
 					onChange={(e) => setInputState(Number(e.target.value))}
