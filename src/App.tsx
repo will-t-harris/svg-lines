@@ -1,29 +1,43 @@
-import React, {useState, ReactElement } from "react";
+import React, { useState, useEffect, ReactElement } from "react";
 
 import { LineChart } from "./components/LineChart/LineChart";
+import { createRandomHSL, createRandomArray } from "./utils";
 import "./App.css";
 
 const App: React.FC = (): ReactElement => {
-	const [inputState, setInputState] = useState(1)
-	let data: { x: number; y: number }[] = [];
-	const createRandomArray = (total: number) => {
-		for (let element: number = 0; element <= total; element++) {
-			const y: number = Math.floor(Math.random() * 50) + 50;
-			const obj: { x: number; y: number } = {
-				x: element,
-				y,
-			};
-			data.push(obj);
-		}
-		return data;
-	};
+	const [inputState, setInputState] = useState(1);
+	const [color, setColor] = useState("");
+
+	useEffect(() => {
+		setColor(createRandomHSL());
+	}, []);
+
+	const lines = createRandomArray(inputState);
 
 	return (
 		<div className="App">
 			<header className="App-header">
-				<h2>Enter number of line segments to generate</h2>
-				<input type='number' value={inputState} onChange={(e) => setInputState(Number(e.target.value))} min={1}/>
-				<LineChart data={createRandomArray(inputState)} />
+				<h2>How many line segments?</h2>
+				<p>(Limited to 5000 segments)</p>
+				<input
+					type="number"
+					value={inputState}
+					onChange={(e) => setInputState(Number(e.target.value))}
+					min={1}
+					max={5000}
+				/>
+				<input
+					type="range"
+					min={0}
+					max={360}
+					step={1}
+					value={inputState}
+					onChange={(e) => setInputState(Number(e.target.value))}
+				/>
+				<button className="button" onClick={() => setColor(createRandomHSL())}>
+					Change color
+				</button>
+				<LineChart data={lines} color={color} />
 			</header>
 		</div>
 	);

@@ -10,7 +10,7 @@ interface Props {
 
 export const LineChart: React.FC<Props> = ({
 	data,
-	color = "#ff4500",
+	color,
 	svgHeight = 100,
 	svgWidth = 300,
 }) => {
