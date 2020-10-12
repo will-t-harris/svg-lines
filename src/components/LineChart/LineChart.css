@@ -6,4 +6,5 @@
 
 .linechart-axis {
   stroke: #000;
+  stroke-width: 0;
 }
