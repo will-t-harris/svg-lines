@@ -18,7 +18,7 @@ const App: React.FC = (): ReactElement => {
 		<div className="App">
 			<header className="App-header">
 				<h2>How many line segments?</h2>
-				<p>(Limited to 5000 segments)</p>
+				<p>(Limited to 5000 segments, be kind to your browser)</p>
 				<input
 					type="number"
 					value={inputState}
